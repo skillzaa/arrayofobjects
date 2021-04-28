@@ -4,7 +4,7 @@
  */
 // const IItem = require("IItem");
 
-export default class ArrayOfObjects{
+module.exports =  class ArrayOfObjects{
 public data:[];        
 constructor(){
     this.data=[];

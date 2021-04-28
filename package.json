@@ -1,0 +1,24 @@
+{
+  "name": "arrayofobjects",
+  "version": "0.0.1",
+  "description": "In Javascript we have built in functions for dealing with arrays as well as for objects BUT we need something to deal with 'Array of Objects'. This module is a wrapper around an array that stores objects. Each object should have a property named 'name' and a property named 'value'. There can not be two objects with the same name.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "uglify": "uglifyjs --compress --mangle -- dist/bilzaa2d.js",
+    "buildTest": "rollup -c rollup.config.t.js",
+    "dist": "rollup -c",
+    "test": "jest ",
+    "pretest": "node convert.js "
+    },
+  "author": "Bilal Tariq",
+  "license": "ISC",
+  "devDependencies": {
+    "rollup": "2.44.0",
+    "rollup-plugin-copy": "3.4.0",
+    "typescript": "4.2.3",
+    "uglify-js": "^3.13.3"
+  },
+  "dependencies": {
+  }
+}

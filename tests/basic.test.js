@@ -1,4 +1,4 @@
-const ArrayOfObjects = require("../dist/index");
+const ArrayOfObjects = require("../index");
 
 const aoo = new ArrayOfObjects();
 

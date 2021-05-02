@@ -1,4 +1,4 @@
-const ArrayOfObjects = require("../index");
+const ArrayOfObjects = require("../src/index");
 
 const aoo = new ArrayOfObjects();
 

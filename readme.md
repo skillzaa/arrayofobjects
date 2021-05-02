@@ -10,21 +10,15 @@ setAttr("name of the attribute");
 To get the 'value' attribute of an object we use getAttr method.
 getAttr("name of the object");
 
-# The definition file of the Module is as under
+# The API
 /**
  * 1--every objects must have a unique "name"  field
  * 2--every OBJECT MUST HAVE "value" field.
  */
-export default class ArrayOfObjects {
-    data: [];
-    constructor();
-    add(name: string): {};
-    protected isUnique(name: string): boolean;
-    get length(): 0;
-    getItem(name: string): boolean;
-    getProperty(name: string, field?: string): boolean;
-    getAttr(name: string, field?: string): number;
-    setProperty(name: string, value: string | number | boolean, field?: string): string | number | boolean;
-    setAttr(name: string, value: string | number | boolean, field?: string): string | number | boolean;
-    getObjectsByName(argumentsRequired?: never[]): never[];
-}
+- add(name:string);
+- length;  //get length()
+- getItem(name:string); //not tested yet fully
+- getAttr(name:string,field= "value"):string|number|boolean
+- setAttr(name:string,value:string|number|boolean,field = "value"):string|number|boolean
+
+### THERE MAY BE BREAKING CHANGES IN NEAR FUTURE

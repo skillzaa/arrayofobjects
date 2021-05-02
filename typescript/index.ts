@@ -3,7 +3,10 @@
  * 2--every OBJECT MUST HAVE "value" field.
  */
 // const IItem = require("IItem");
-
+const Validator = require('validator99');
+const val = new Validator();
+// console.log(val);
+// val.isNumber("string",true);
 module.exports =  class ArrayOfObjects{
 public data:[];        
 constructor(){
@@ -11,6 +14,7 @@ constructor(){
 }
 
 add(name:string){
+val.isString(name,true,"The name should be of type string");    
 if (this.isUnique(name) === true){
     const a = {};
     a.name = name; 
@@ -39,6 +43,7 @@ return this.data.length;
 }
     
 getItem(name:string){
+val.isString(name,true,"The name should be of type string");    
 for (let idx = 0; idx < this.data.length; idx++) {
     if(this.data[idx].name === name){
         return this.data[idx];
@@ -47,31 +52,30 @@ for (let idx = 0; idx < this.data.length; idx++) {
 return false;   
 }//.....................
     
-getProperty(name:string,field= "value"){
+getAttr(name:string,field= "value"):string|number|boolean{
+val.isString(name,true,"The name should be of type string");    
 for (let idx = 0; idx < this.data.length; idx++) {
-    if(this.data[idx].name === name){
+    const thisName = this.data[idx].name; 
+    if( thisName == name){
         return this.data[idx][field];
     }
 }
 return false;    
 }
-getAttr(name:string,field= "value"){
-return Number(this.getProperty(name));
-}
  
-setProperty(name:string,value:string|number|boolean,field = "value"):string|number|boolean{
-    for (let idx = 0; idx < this.data.length; idx++) {
-        if(this.data[idx].name === name){
-                this.data[idx][field] = value;
-                return this.data[idx][field];
-        }
-    }        
-return true;       
-    }//......
 setAttr(name:string,value:string|number|boolean,field = "value"):string|number|boolean{
-    return Number(this.setProperty(name,value));          
-    }//......
-        
+val.isString(name,true,"The name should be of type string");    
+
+for (let idx = 0; idx < this.data.length; idx++) {
+    if(this.data[idx].name == name){
+            this.data[idx][field] = value;
+            return this.data[idx][field];
+    }
+}        
+return true;       
+}//......
+
+    
 getObjectsByName(argumentsRequired=[]){
 const ret = [];         
 this.data.forEach(bd => {

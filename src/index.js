@@ -1,13 +1,19 @@
+"use strict";
 /**
  * 1--every objects must have a unique "name"  field
  * 2--every OBJECT MUST HAVE "value" field.
  */
 // const IItem = require("IItem");
-export default class ArrayOfObjects {
+const Validator = require('validator99');
+const val = new Validator();
+// console.log(val);
+// val.isNumber("string",true);
+module.exports = class ArrayOfObjects {
     constructor() {
         this.data = [];
     }
     add(name) {
+        val.isString(name, true, "The name should be of type string");
         if (this.isUnique(name) === true) {
             const a = {};
             a.name = name;
@@ -35,6 +41,7 @@ export default class ArrayOfObjects {
         return this.data.length;
     }
     getItem(name) {
+        val.isString(name, true, "The name should be of type string");
         for (let idx = 0; idx < this.data.length; idx++) {
             if (this.data[idx].name === name) {
                 return this.data[idx];
@@ -42,28 +49,25 @@ export default class ArrayOfObjects {
         }
         return false;
     } //.....................
-    getProperty(name, field = "value") {
+    getAttr(name, field = "value") {
+        val.isString(name, true, "The name should be of type string");
         for (let idx = 0; idx < this.data.length; idx++) {
-            if (this.data[idx].name === name) {
+            const thisName = this.data[idx].name;
+            if (thisName == name) {
                 return this.data[idx][field];
             }
         }
         return false;
     }
-    getAttr(name, field = "value") {
-        return Number(this.getProperty(name));
-    }
-    setProperty(name, value, field = "value") {
+    setAttr(name, value, field = "value") {
+        val.isString(name, true, "The name should be of type string");
         for (let idx = 0; idx < this.data.length; idx++) {
-            if (this.data[idx].name === name) {
+            if (this.data[idx].name == name) {
                 this.data[idx][field] = value;
                 return this.data[idx][field];
             }
         }
         return true;
-    } //......
-    setAttr(name, value, field = "value") {
-        return Number(this.setProperty(name, value));
     } //......
     getObjectsByName(argumentsRequired = []) {
         const ret = [];
@@ -76,4 +80,4 @@ export default class ArrayOfObjects {
         });
         return ret;
     }
-}
+};

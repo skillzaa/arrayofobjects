@@ -15,7 +15,7 @@ getAttr("name of the object");
  * 1--every objects must have a unique "name"  field
  * 2--every OBJECT MUST HAVE "value" field.
  */
-- add(name:string);
+- add(name:string,value:string|number|boolean);
 - length;  //get length()
 - getItem(name:string); //not tested yet fully
 - getAttr(name:string,field= "value"):string|number|boolean

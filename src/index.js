@@ -12,16 +12,17 @@ module.exports = class ArrayOfObjects {
     constructor() {
         this.data = [];
     }
-    add(name) {
-        val.isString(name, true, "The name should be of type string");
+    add(name, value = "") {
+        val.isString(name, true, "The name is compulsary and should be of type string");
         if (this.isUnique(name) === true) {
             const a = {};
             a.name = name;
+            a.value = value;
             this.data.push(a);
             return a;
         }
         else {
-            throw new Error("Please Provide a unique and valid string name for the object");
+            throw new Error(`Please Provide a unique and valid string name for the object. The name ::${name} already exists`);
         }
     }
     isUnique(name) {

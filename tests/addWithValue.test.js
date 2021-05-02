@@ -1,22 +1,25 @@
 const ArrayOfObjects = require("../src/index");
 const aoo = new ArrayOfObjects();
 
-const a = aoo.add("test");
+const a = aoo.add("test",500);
 
-test('add', () => {
+test('obj', () => {
 expect(typeof a).toBe("object"); 
 });
-
-test('check name', () => {
+test('name', () => {
 expect(a.name).toBe("test"); 
+});
+
+test('without name :error', () => {
+expect(a.value).toBe(500); 
 });
 test('try to add another test', () => {
     expect(() => {
         aoo.add("test");
-    }).toThrow();
+    }).toThrow('Please Provide a unique and valid string name for the object');
 });
-test('try sending non string as name', () => {
+test('try sending no name', () => {
     expect(() => {
-        aoo.add({});
+        aoo.add();
     }).toThrow('The name is compulsary and should be of type string');
 });

@@ -1,14 +1,6 @@
-"use strict";
-/**
- * 1--every objects must have a unique "name"  field
- * 2--every OBJECT MUST HAVE "value" field.
- */
-// const IItem = require("IItem");
-const Validator = require('validator99');
+import Validator from "../node_modules/validator99/dist/Validator.js";
 const val = new Validator();
-// console.log(val);
-// val.isNumber("string",true);
-module.exports = class ArrayOfObjects {
+export default class ArrayOfObjects {
     constructor() {
         this.data = [];
     }
@@ -81,4 +73,15 @@ module.exports = class ArrayOfObjects {
         });
         return ret;
     }
-};
+    getItemsByNames(argumentsRequired = []) {
+        const ret = [];
+        this.data.forEach(bd => {
+            argumentsRequired.forEach(ag => {
+                if (ag == bd.name) {
+                    ret.push(bd);
+                }
+            });
+        });
+        return ret;
+    }
+}

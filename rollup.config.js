@@ -1,9 +1,9 @@
 //import { terser } from "rollup-plugin-terser";
 export default {
-	input: 'src/index.js',
+	input: 'src/ArrayOfObjects.js',
 //	plugins: [terser()],
 	output: {
-	  file: 'dist/index.js',
+	  file: 'dist/ArrayOfObjects.js',
 	  format: 'cjs',
 	}
   };
